@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://8cgigutlgvyu"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_kk8um"]
+[ext_resource type="FontFile" uid="uid://duh5e3dbcl2ao" path="res://assets/fonts/Kenney Pixel.ttf" id="2_6p3st"]
+[ext_resource type="Theme" uid="uid://dgotkhuyeu2af" path="res://assets/theme.tres" id="3_adlps"]
+[ext_resource type="AudioStream" uid="uid://br2bsiooinxs7" path="res://assets/sounds/interface/button_focus.ogg" id="4_8kepj"]
+[ext_resource type="AudioStream" uid="uid://0a44sixdi2k8" path="res://assets/sounds/interface/button_click.ogg" id="5_6wlx6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ofcpx"]
+load_path = "res://.godot/imported/panel-transparent-center-015.png-e26ad91df49870c09574e84eb3177724.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fd18u"]
+texture = SubResource("CompressedTexture2D_ofcpx")
+modulate_color = Color(0.217101, 0.217101, 0.217101, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4mx7"]
+texture = SubResource("CompressedTexture2D_ofcpx")
+modulate_color = Color(0.854902, 0.639216, 0.529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w10ul"]
+texture = SubResource("CompressedTexture2D_ofcpx")
+modulate_color = Color(0.854902, 0.639216, 0.529412, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xx4tj"]
+texture = SubResource("CompressedTexture2D_ofcpx")
+modulate_color = Color(0.533333, 0.662745, 0.0745098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xomfg"]
+texture = SubResource("CompressedTexture2D_ofcpx")
+modulate_color = Color(0.854902, 0.639216, 0.529412, 1)
+
+[sub_resource type="Theme" id="Theme_px28l"]
+default_font = ExtResource("2_6p3st")
+default_font_size = 32
+Button/styles/disabled = SubResource("StyleBoxTexture_fd18u")
+Button/styles/focus = SubResource("StyleBoxTexture_f4mx7")
+Button/styles/hover = SubResource("StyleBoxTexture_w10ul")
+Button/styles/normal = SubResource("StyleBoxTexture_xx4tj")
+Button/styles/pressed = SubResource("StyleBoxTexture_xomfg")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kk8um")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 19.0
+offset_right = 181.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme = SubResource("Theme_px28l")
+theme_override_font_sizes/font_size = 64
+text = "The endless  deck"
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Play_button" type="Button" parent="Buttons"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -16.0
+offset_right = 165.0
+offset_bottom = 16.0
+grow_vertical = 2
+focus_neighbor_left = NodePath("../Exit_button")
+focus_neighbor_right = NodePath("../Settings_button")
+theme = ExtResource("3_adlps")
+text = "Play"
+
+[node name="Settings_button" type="Button" parent="Buttons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../Play_button")
+focus_neighbor_right = NodePath("../Exit_button")
+theme = ExtResource("3_adlps")
+text = "Settings"
+
+[node name="Exit_button" type="Button" parent="Buttons"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = -16.0
+offset_right = 427.0
+offset_bottom = 16.0
+grow_vertical = 2
+focus_neighbor_left = NodePath("../Settings_button")
+focus_neighbor_right = NodePath("../Play_button")
+theme = ExtResource("3_adlps")
+text = "Exit"
+
+[node name="Focus_button" type="AudioStreamPlayer" parent="Buttons"]
+stream = ExtResource("4_8kepj")
+
+[node name="Click_button" type="AudioStreamPlayer" parent="Buttons"]
+stream = ExtResource("5_6wlx6")
+volume_db = -5.0
+
+[connection signal="focus_exited" from="Buttons/Play_button" to="." method="play_focus_sound"]
+[connection signal="pressed" from="Buttons/Play_button" to="." method="_on_play_button_pressed"]
+[connection signal="focus_exited" from="Buttons/Settings_button" to="." method="play_focus_sound"]
+[connection signal="pressed" from="Buttons/Settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="focus_exited" from="Buttons/Exit_button" to="." method="play_focus_sound"]
+[connection signal="pressed" from="Buttons/Exit_button" to="." method="_on_exit_button_pressed"]
