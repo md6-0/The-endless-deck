@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://h7oggufs5esp"]
+
+[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_gix0t"]
+[ext_resource type="Theme" uid="uid://dgotkhuyeu2af" path="res://assets/theme.tres" id="1_gmtya"]
+[ext_resource type="AudioStream" uid="uid://br2bsiooinxs7" path="res://assets/sounds/interface/button_focus.ogg" id="3_dl42c"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gix0t")
+
+[node name="Header" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Header"]
+offset_right = 480.0
+offset_bottom = 52.0
+color = Color(0.174028, 0.174028, 0.174028, 1)
+
+[node name="Coins_label" type="Label" parent="Header"]
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 62.0
+offset_bottom = 16.0
+theme = ExtResource("1_gmtya")
+text = "Coins : 5"
+
+[node name="Menu_button" type="Button" parent="Header"]
+offset_left = 403.0
+offset_top = 8.0
+offset_right = 473.0
+offset_bottom = 24.0
+theme = ExtResource("1_gmtya")
+text = "Main menu"
+
+[node name="Play_button" type="Button" parent="Header"]
+offset_left = 403.0
+offset_top = 30.0
+offset_right = 473.0
+offset_bottom = 46.0
+theme = ExtResource("1_gmtya")
+text = "Play"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 52.0
+offset_right = 474.0
+offset_bottom = 269.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 38
+columns = 3
+
+[node name="Focus_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dl42c")
+
+[connection signal="pressed" from="Header/Menu_button" to="." method="_on_menu_button_pressed"]

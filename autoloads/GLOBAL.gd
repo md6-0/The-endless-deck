@@ -1,11 +1,30 @@
 extends Node
 
+const HAND_SIZE: int = 4
+var rng = RandomNumberGenerator.new()
+var coins: int = 5000
+var gemes: int
+var deck: Array
 
-# Called when the node enters the scene tree for the first time.
+var hand: Array
+var card: String
+
 func _ready():
-	pass # Replace with function body.
+	deck = ["Shoot", "Jump"]
+	create_hand()
 
+func create_hand():
+	for i in HAND_SIZE:
+		hand.insert(i,deck[int(rng.randf_range(0,deck.size()))])
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func substitute_card(pos:int):
+	hand[pos] = deck[int(rng.randf_range(0,deck.size()))]
+
+func get_card(pos:int):
+	card = hand[pos]
+	hand[pos] = "none"
+	return card
+	
+func get_hand():
+	return hand
+	

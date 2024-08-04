@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dgotkhuyeu2af"]
 
-[ext_resource type="FontFile" uid="uid://duh5e3dbcl2ao" path="res://assets/fonts/Kenney Pixel.ttf" id="1_lp7d4"]
+[ext_resource type="FontFile" uid="uid://dxdob5j1cp4ht" path="res://assets/fonts/PixelOperator8.ttf" id="1_plnoo"]
 
 [resource]
-default_font = ExtResource("1_lp7d4")
-default_font_size = 32
+default_font = ExtResource("1_plnoo")
+default_font_size = 8
