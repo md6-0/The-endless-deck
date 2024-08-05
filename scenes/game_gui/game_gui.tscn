@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsfn3b3tdl51"]
+
+[ext_resource type="Texture2D" uid="uid://dguurknf1lbgn" path="res://assets/visuals/sprites/32-sprite.png" id="1_7jac7"]
+[ext_resource type="Script" path="res://scenes/game_gui/game_gui.gd" id="1_uanbx"]
+
+[node name="GameGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uanbx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="X_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(147, 243)
+texture = ExtResource("1_7jac7")
+
+[node name="Y_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(211, 243)
+texture = ExtResource("1_7jac7")
+
+[node name="A_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(273, 243)
+texture = ExtResource("1_7jac7")
+
+[node name="B_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(336, 243)
+texture = ExtResource("1_7jac7")

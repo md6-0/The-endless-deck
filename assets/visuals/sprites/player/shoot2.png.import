@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkr8suvtfd7mf"
-path="res://.godot/imported/tile_jump.png-f183e28a18e9beb57e231943ed106ee7.ctex"
+uid="uid://dnkp3yqchv4h5"
+path="res://.godot/imported/shoot2.png-679c088c6b7c873e392225428c73966b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/sprites/tiles/player/tile_jump.png"
-dest_files=["res://.godot/imported/tile_jump.png-f183e28a18e9beb57e231943ed106ee7.ctex"]
+source_file="res://assets/visuals/sprites/player/shoot2.png"
+dest_files=["res://.godot/imported/shoot2.png-679c088c6b7c873e392225428c73966b.ctex"]
 
 [params]
 

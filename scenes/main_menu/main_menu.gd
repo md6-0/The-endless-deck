@@ -20,3 +20,7 @@ func play_focus_sound():
 
 func _on_shop_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/shop/shop.tscn")
+
+
+func _on_delete_save_button_pressed():
+	SAVEMANAGER.delete_save()

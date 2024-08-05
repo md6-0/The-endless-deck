@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0w6bce2rqqph"
-path="res://.godot/imported/tile_walk3.png-074fd36511f261a632ad2407cb7e62d2.ctex"
+uid="uid://ne5ju2tacf4h"
+path="res://.godot/imported/shoot1.png-ba0e4c60e344d2923d5bfbc7106c6f9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/sprites/tiles/player/tile_walk3.png"
-dest_files=["res://.godot/imported/tile_walk3.png-074fd36511f261a632ad2407cb7e62d2.ctex"]
+source_file="res://assets/visuals/sprites/player/shoot1.png"
+dest_files=["res://.godot/imported/shoot1.png-ba0e4c60e344d2923d5bfbc7106c6f9c.ctex"]
 
 [params]
 

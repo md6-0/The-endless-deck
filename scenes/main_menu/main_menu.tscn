@@ -144,6 +144,13 @@ text = "Exit"
 [node name="Focus_sound" type="AudioStreamPlayer" parent="Buttons"]
 stream = ExtResource("4_8kepj")
 
+[node name="Delete_Save_Button" type="Button" parent="Buttons"]
+offset_left = 366.0
+offset_top = 232.0
+offset_right = 464.0
+offset_bottom = 263.0
+text = "Delete save"
+
 [connection signal="focus_exited" from="Buttons/Play_button" to="." method="play_focus_sound"]
 [connection signal="pressed" from="Buttons/Play_button" to="." method="_on_play_button_pressed"]
 [connection signal="focus_exited" from="Buttons/Shop_button" to="." method="play_focus_sound"]
@@ -152,3 +159,4 @@ stream = ExtResource("4_8kepj")
 [connection signal="pressed" from="Buttons/Settings_button" to="." method="_on_settings_button_pressed"]
 [connection signal="focus_exited" from="Buttons/Exit_button" to="." method="play_focus_sound"]
 [connection signal="pressed" from="Buttons/Exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Buttons/Delete_Save_Button" to="." method="_on_delete_save_button_pressed"]

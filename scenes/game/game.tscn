@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://qmwoudo4a8rh"]
+[gd_scene load_steps=5 format=3 uid="uid://qmwoudo4a8rh"]
 
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_2lfek"]
 [ext_resource type="Script" path="res://scenes/game/Level_generator.gd" id="1_e1vj8"]
+[ext_resource type="PackedScene" uid="uid://dpsfn3b3tdl51" path="res://scenes/game_gui/game_gui.tscn" id="1_rkbir"]
 [ext_resource type="PackedScene" uid="uid://dp74cxffl63u2" path="res://scenes/player/player.tscn" id="2_8w1hq"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["level"]]
+script = ExtResource("1_2lfek")
+
+[node name="GameGui" parent="." instance=ExtResource("1_rkbir")]
+offset_left = 54.0
+offset_top = 215.0
+offset_right = 54.0
+offset_bottom = 215.0
 
 [node name="Level_generator" type="Node" parent="."]
 script = ExtResource("1_e1vj8")

@@ -21,7 +21,7 @@ func _ready():
 	item_price_label.text = str(item_credits) + " coins"
 	if item_sold:
 		set_items_as_sold()
-	else: pass #texture_rect.texture = load(item_icon)
+	else: texture_rect.texture = load(item_icon)
 
 func set_items_as_sold():
 	item_sold = true
@@ -33,5 +33,6 @@ func _on_buy_button_pressed():
 		GLOBAL.coins -= item_credits
 		GLOBAL.deck.append(item_name)
 		success_sound.play()
+		SAVEMANAGER.save_game()
 	else:
 		error_sound.play()

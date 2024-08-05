@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b83g2o5b5qyvm"
-path="res://.godot/imported/tile_dead3.png-b869a625e21579d475a3055e3181a7a2.ctex"
+uid="uid://doii7x5c58gru"
+path="res://.godot/imported/24-sprite-yellow.png-93d7cb22d4714f30f0e6e15e26727990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/sprites/tiles/player/tile_dead3.png"
-dest_files=["res://.godot/imported/tile_dead3.png-b869a625e21579d475a3055e3181a7a2.ctex"]
+source_file="res://assets/visuals/sprites/24-sprite-yellow.png"
+dest_files=["res://.godot/imported/24-sprite-yellow.png-93d7cb22d4714f30f0e6e15e26727990.ctex"]
 
 [params]
 

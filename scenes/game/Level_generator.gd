@@ -8,7 +8,6 @@ var is_second_segment = true
 
 # Cargar las escenas de los segmentos
 var segment_scene_0 = preload("res://scenes/game_segments/segment_0.tscn")
-
 var player: Player
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +16,6 @@ func _ready():
 	
 	# Añadir las escenas de los segmentos al array
 	segment_scenes.append(segment_scene_0)
-
 
 	# Generar los 6 primeros segmentos del nivel
 	spawn_first_segment()
