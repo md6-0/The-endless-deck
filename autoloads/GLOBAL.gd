@@ -8,9 +8,6 @@ var deck: Array
 var hand: Array
 var card: String
 
-var cards_used: int
-var run_time: int
-
 func _ready():
 	reset_vars()
 

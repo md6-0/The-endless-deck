@@ -60,3 +60,4 @@ columns = 3
 stream = ExtResource("3_dl42c")
 
 [connection signal="pressed" from="Header/Menu_button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Header/Play_button" to="." method="_on_play_button_pressed"]

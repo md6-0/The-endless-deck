@@ -14,7 +14,7 @@ const SHAKE_DURATION = 0.2
 @onready var shake_duration = 0.0
 
 @onready var is_dead = false
-@onready var healt: int = 3
+@onready var health: int = 3
 @onready var is_dashing = false
 @onready var dash_timer = 0.0
 
@@ -29,7 +29,7 @@ const SHAKE_DURATION = 0.2
 
 @onready var proyectile: PackedScene = preload("res://scenes/player/shoot.tscn")
 
-#@onready var audio_stream_player = $AudioStreamPlayer
+@onready var hurt_sound = $Sounds/Hurt_sound
 @onready var jump_sound = $Sounds/Jump_sound
 @onready var dash_sound = $Sounds/Dash_sound
 @onready var shoot_sound = $Sounds/Shoot_sound
@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if is_dead:
 		death_ctrl(delta)
 	else:
-		GLOBAL.run_time += delta
+		RUNINFORMATION.run_time += delta
 		velocity.y += gravity * delta
 		movement_ctrl(delta)
 		animation_ctrl()
@@ -90,7 +90,6 @@ func death_ctrl(delta):
 		velocity.x -= 1.2
 	else:
 		velocity.x = 0
-		GLOBAL.distance = calculate_distance()
 		
 	velocity.y += gravity * delta
 	if animated_sprite_2d.animation != "die":
@@ -102,7 +101,7 @@ func perform_action(card: String):
 		"Jump": jump_ctrl()
 		"Dash": dash_ctrl()
 		"Shoot": shoot_ctrl()
-	GLOBAL.cards_used += 1
+	RUNINFORMATION.cards_used += 1
 
 func jump_ctrl():
 	jump_sound.pitch_scale = rng.randf_range(0.8, 1.2)
@@ -126,12 +125,13 @@ func shoot_ctrl():
 	get_tree().call_group("level", "add_child", proyectile_instance)
 
 func damage_ctrl(damage):
-	if healt > 0:
+	if health > 0:
 		if not is_dashing:
-			#audio_stream_player.play()
+			hurt_sound.play()
 			shake_duration = SHAKE_DURATION
-			healt -= damage
-			if healt <= 0:
+			health -= damage
+			if health <= 0:
+				game_over_timer.start()
 				is_dead = true
 				velocity.x = SPEED
 				collision_shape_2d.disabled = true
@@ -146,7 +146,7 @@ func apply_camera_shake(delta):
 func calculate_distance():
 	return int(global_position.distance_to(Vector2.ZERO))
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	#if area is Enemy3_shoot:
 		#damage_ctrl(1)
 		#area.queue_free()
@@ -168,3 +168,10 @@ func _on_y_timer_timeout():
 	y_timer.stop()
 	GLOBAL.substitute_card(3)
 
+func _on_game_over_timer_timeout():
+	game_over_timer.stop()
+	var game_gui = get_tree().get_nodes_in_group("gamegui")[0]  
+	var gameover = get_tree().get_nodes_in_group("gameover")[0]  
+	game_gui.hide_game_gui()
+	gameover.show_game_over_overlay()
+	

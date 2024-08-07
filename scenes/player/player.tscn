@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp74cxffl63u2"]
+[gd_scene load_steps=14 format=3 uid="uid://dp74cxffl63u2"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_tmuks"]
 [ext_resource type="Texture2D" uid="uid://i2gmjlevrrdr" path="res://assets/visuals/sprites/player/tile_dead.png" id="2_l6i07"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://oynj1f0xvgl" path="res://assets/visuals/sprites/player/tile_walk2.png" id="5_vk8fg"]
 [ext_resource type="Texture2D" uid="uid://b0w6bce2rqqph" path="res://assets/visuals/sprites/player/tile_walk3.png" id="6_1e3ke"]
 [ext_resource type="PackedScene" uid="uid://givwxu3aetcc" path="res://scenes/player/dash_particles.tscn" id="7_2cthg"]
+[ext_resource type="AudioStream" uid="uid://tslmh8yrp8bi" path="res://assets/sounds/sfx/player/player_jump.wav" id="8_llrf1"]
+[ext_resource type="AudioStream" uid="uid://7lmrsptqtlcb" path="res://assets/sounds/sfx/player/player_dash.wav" id="9_y2hf6"]
+[ext_resource type="AudioStream" uid="uid://bqh8a160oky3i" path="res://assets/sounds/sfx/player/player_shot.wav" id="10_xjhtj"]
+[ext_resource type="AudioStream" uid="uid://cwr23b5gu1rk" path="res://assets/sounds/sfx/player/player_hurt.wav" id="11_vn182"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0llg"]
 size = Vector2(6, 10)
@@ -44,7 +48,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_tmuks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,14 +73,21 @@ autoplay = "run"
 [node name="B_Timer" type="Timer" parent="Timers"]
 
 [node name="Game_over_Timer" type="Timer" parent="Timers"]
+wait_time = 2.0
 
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Jump_sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_llrf1")
 
 [node name="Dash_sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_y2hf6")
 
 [node name="Shoot_sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_xjhtj")
+
+[node name="Hurt_sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_vn182")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(181, 0)
@@ -85,3 +96,4 @@ position = Vector2(181, 0)
 [connection signal="timeout" from="Timers/Y_Timer" to="." method="_on_y_timer_timeout"]
 [connection signal="timeout" from="Timers/A_Timer" to="." method="_on_a_timer_timeout"]
 [connection signal="timeout" from="Timers/B_Timer" to="." method="_on_b_timer_timeout"]
+[connection signal="timeout" from="Timers/Game_over_Timer" to="." method="_on_game_over_timer_timeout"]

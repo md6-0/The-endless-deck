@@ -1,0 +1,207 @@
+[gd_scene load_steps=4 format=3 uid="uid://djkikcoxl8b4x"]
+
+[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_0pgci"]
+[ext_resource type="Theme" uid="uid://dgotkhuyeu2af" path="res://assets/theme.tres" id="3_5yvkn"]
+[ext_resource type="FontFile" uid="uid://dxdob5j1cp4ht" path="res://assets/fonts/PixelOperator8.ttf" id="4_cn3pg"]
+
+[node name="GameOver" type="Control" groups=["gameover"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0pgci")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 485.0
+offset_bottom = 273.0
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Label_youdied" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -219.0
+offset_top = 18.0
+offset_right = 13.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cn3pg")
+theme_override_font_sizes/font_size = 32
+
+[node name="Restart" type="Button" parent="CanvasLayer"]
+offset_left = 337.0
+offset_top = 17.0
+offset_right = 444.0
+offset_bottom = 48.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Store")
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "RESTART"
+
+[node name="Store" type="Button" parent="CanvasLayer"]
+offset_left = 337.0
+offset_top = 57.0
+offset_right = 447.0
+offset_bottom = 88.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_bottom = NodePath("../Exit")
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "SHOP"
+
+[node name="Exit" type="Button" parent="CanvasLayer"]
+offset_left = 338.0
+offset_top = 98.0
+offset_right = 444.0
+offset_bottom = 129.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Store")
+focus_neighbor_bottom = NodePath("../Restart")
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+text = "EXIT"
+
+[node name="Label_time" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 66.0
+offset_right = 164.0
+offset_bottom = 89.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_time_value" type="Label" parent="CanvasLayer"]
+offset_left = 147.0
+offset_top = 66.0
+offset_right = 287.0
+offset_bottom = 89.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_distance" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 95.0
+offset_right = 213.0
+offset_bottom = 118.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_distance_value" type="Label" parent="CanvasLayer"]
+offset_left = 148.0
+offset_top = 95.0
+offset_right = 338.0
+offset_bottom = 118.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_enemies" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 123.0
+offset_right = 247.0
+offset_bottom = 146.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_enemies_value" type="Label" parent="CanvasLayer"]
+offset_left = 221.0
+offset_top = 123.0
+offset_right = 445.0
+offset_bottom = 146.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_cards" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 151.0
+offset_right = 135.0
+offset_bottom = 174.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_cards_value" type="Label" parent="CanvasLayer"]
+offset_left = 247.0
+offset_top = 151.0
+offset_right = 359.0
+offset_bottom = 174.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_coins" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 180.0
+offset_right = 135.0
+offset_bottom = 203.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_coins_value" type="Label" parent="CanvasLayer"]
+offset_left = 231.0
+offset_top = 180.0
+offset_right = 343.0
+offset_bottom = 203.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_gemes" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 210.0
+offset_right = 213.0
+offset_bottom = 233.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_gemes_value" type="Label" parent="CanvasLayer"]
+offset_left = 225.0
+offset_top = 211.0
+offset_right = 415.0
+offset_bottom = 234.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_hearts" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 240.0
+offset_right = 214.0
+offset_bottom = 263.0
+theme = ExtResource("3_5yvkn")
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Label_hearts_value" type="Label" parent="CanvasLayer"]
+offset_left = 176.0
+offset_top = 240.0
+offset_right = 366.0
+offset_bottom = 263.0
+theme = ExtResource("3_5yvkn")
+theme_override_font_sizes/font_size = 16
+
+[node name="Typing_timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+pitch_scale = 1.6
+
+[connection signal="focus_exited" from="CanvasLayer/Restart" to="." method="_on_restart_focus_exited"]
+[connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="focus_exited" from="CanvasLayer/Store" to="." method="_on_restart_focus_exited"]
+[connection signal="pressed" from="CanvasLayer/Store" to="." method="_on_store_pressed"]
+[connection signal="focus_exited" from="CanvasLayer/Exit" to="." method="_on_exit_focus_exited"]
+[connection signal="pressed" from="CanvasLayer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Typing_timer" to="." method="_on_typing_timer_timeout"]

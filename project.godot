@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 GLOBAL="*res://autoloads/GLOBAL.gd"
 SAVEMANAGER="*res://autoloads/SAVEMANAGER.gd"
+RUNINFORMATION="*res://autoloads/RUNINFORMATION.gd"
 
 [display]
 

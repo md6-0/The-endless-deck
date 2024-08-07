@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpsfn3b3tdl51"]
+[gd_scene load_steps=4 format=3 uid="uid://dpsfn3b3tdl51"]
 
 [ext_resource type="Texture2D" uid="uid://dguurknf1lbgn" path="res://assets/visuals/sprites/32-sprite.png" id="1_7jac7"]
 [ext_resource type="Script" path="res://scenes/game_gui/game_gui.gd" id="1_uanbx"]
+[ext_resource type="Theme" uid="uid://dgotkhuyeu2af" path="res://assets/theme.tres" id="3_8fm1a"]
 
-[node name="GameGui" type="Control"]
+[node name="GameGui" type="Control" groups=["gamegui"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,3 +30,11 @@ texture = ExtResource("1_7jac7")
 [node name="B_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(336, 243)
 texture = ExtResource("1_7jac7")
+
+[node name="Health_Label" type="Label" parent="CanvasLayer"]
+offset_left = 217.0
+offset_top = 211.0
+offset_right = 265.0
+offset_bottom = 219.0
+theme = ExtResource("3_8fm1a")
+text = "Healt: 3"
