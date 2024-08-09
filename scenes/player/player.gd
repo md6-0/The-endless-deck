@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal player_died
+
 const SPEED = 175.0
 const JUMP_VELOCITY = -375.0
 const DASH_SPEED = 600.0
@@ -170,8 +172,4 @@ func _on_y_timer_timeout():
 
 func _on_game_over_timer_timeout():
 	game_over_timer.stop()
-	var game_gui = get_tree().get_nodes_in_group("gamegui")[0]  
-	var gameover = get_tree().get_nodes_in_group("gameover")[0]  
-	game_gui.hide_game_gui()
-	gameover.show_game_over_overlay()
-	
+	player_died.emit()

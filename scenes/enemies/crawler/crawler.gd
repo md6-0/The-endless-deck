@@ -16,6 +16,7 @@ func _on_area_2d_body_entered(body):
 		area_2d.queue_free()
 		body.damage_ctrl(1)
 		animated_sprite_2d.play("dead")
+		RUNINFORMATION.enemmies_killed += 1
 		dead_sound.play()
 
 #Función que detecta areas colisionando con el enemigo. Ahora se usa sólo para las balas del personaje
@@ -25,6 +26,7 @@ func _on_area_2d_area_entered(area):
 		is_dead = true
 		area_2d.queue_free()
 		animated_sprite_2d.play("dead")
+		RUNINFORMATION.enemmies_killed += 1
 		dead_sound.play()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
