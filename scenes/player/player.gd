@@ -77,7 +77,7 @@ func movement_ctrl(delta):
 		if not is_on_floor() and velocity.y >= 0:
 			velocity.y = 0
 	else:
-		velocity.x = SPEED
+		velocity.x = 0
 
 func animation_ctrl():
 	if not is_on_floor():

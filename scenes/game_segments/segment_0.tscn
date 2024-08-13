@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d5rv1b6gvsqf"]
+[gd_scene load_steps=6 format=3 uid="uid://d5rv1b6gvsqf"]
 
 [ext_resource type="Texture2D" uid="uid://don3d4k17nthw" path="res://assets/visuals/sprites/tiles/tilemap.png" id="1_kyn87"]
 [ext_resource type="PackedScene" uid="uid://bafnn8wh0gvow" path="res://scenes/enemies/crawler/crawler.tscn" id="2_fhcls"]
+[ext_resource type="PackedScene" uid="uid://d0yphs5r8flo7" path="res://scenes/enemies/helicopter/helicopter.tscn" id="3_11mlw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0cj8"]
 texture = ExtResource("1_kyn87")
@@ -1218,3 +1219,6 @@ layer_0/tile_data = PackedInt32Array(917504, 1179649, 17, 917505, 1179649, 17, 9
 
 [node name="Crawler" parent="." instance=ExtResource("2_fhcls")]
 position = Vector2(458, 216)
+
+[node name="Helicopter" parent="." instance=ExtResource("3_11mlw")]
+position = Vector2(212, 173)
