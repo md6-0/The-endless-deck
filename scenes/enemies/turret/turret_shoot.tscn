@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8ripnsnyhkhq"]
+
+[ext_resource type="Script" path="res://scenes/enemies/turret/turret_shoot.gd" id="1_nqmvq"]
+[ext_resource type="Texture2D" uid="uid://y14486nxnj8o" path="res://assets/visuals/sprites/enemies/turret/turret_shoot.png" id="2_jvn7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ain8b"]
+size = Vector2(9, 9)
+
+[node name="TurretShoot" type="Area2D"]
+script = ExtResource("1_nqmvq")
+
+[node name="TurretShoot" type="Sprite2D" parent="."]
+modulate = Color(1, 0.173855, 0.130238, 1)
+position = Vector2(0, 1)
+texture = ExtResource("2_jvn7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_ain8b")

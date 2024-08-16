@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://o60t5ghwenkf"]
+
+[ext_resource type="Script" path="res://scenes/enemies/turret/turret.gd" id="1_4t8ho"]
+[ext_resource type="Texture2D" uid="uid://dnbgvu87w2r7g" path="res://assets/visuals/sprites/enemies/turret/turret_net.png" id="2_xa6rq"]
+[ext_resource type="Texture2D" uid="uid://d08hcgx6rkmtn" path="res://assets/visuals/sprites/enemies/turret/turret_spider.png" id="3_htin4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tarpl"]
+size = Vector2(290, 215)
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_4t8ho")
+
+[node name="TurretNet" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("2_xa6rq")
+
+[node name="TurretNet2" type="Sprite2D" parent="."]
+position = Vector2(0, 24)
+texture = ExtResource("2_xa6rq")
+
+[node name="TurretSpider_sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 39)
+texture = ExtResource("3_htin4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 45)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 97.5)
+shape = SubResource("RectangleShape2D_tarpl")
+
+[node name="Shoot_Timer" type="Timer" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Shoot_Timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

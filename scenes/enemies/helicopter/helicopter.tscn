@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_eifk0")
 sprite_frames = SubResource("SpriteFrames_r6obb")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.384371
+frame_progress = 0.575716
 
 [node name="Dead_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8441i")

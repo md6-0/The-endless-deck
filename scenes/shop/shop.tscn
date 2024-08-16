@@ -33,7 +33,9 @@ offset_left = 403.0
 offset_top = 8.0
 offset_right = 473.0
 offset_bottom = 24.0
+focus_neighbor_bottom = NodePath("../Play_button")
 theme = ExtResource("1_gmtya")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 text = "Main menu"
 
 [node name="Play_button" type="Button" parent="Header"]
@@ -41,7 +43,10 @@ offset_left = 403.0
 offset_top = 30.0
 offset_right = 473.0
 offset_bottom = 46.0
+focus_neighbor_top = NodePath("../Menu_button")
+focus_neighbor_bottom = NodePath("../../ScrollContainer/GridContainer")
 theme = ExtResource("1_gmtya")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 text = "Play"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

@@ -22,6 +22,8 @@ const SHAKE_DURATION = 0.2
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var shoots_collision_shape_2d = $Shoots_Area2D/Shoots_CollisionShape2D
+
 
 @onready var x_timer = $Timers/X_Timer
 @onready var y_timer = $Timers/Y_Timer
@@ -35,7 +37,6 @@ const SHAKE_DURATION = 0.2
 @onready var jump_sound = $Sounds/Jump_sound
 @onready var dash_sound = $Sounds/Dash_sound
 @onready var shoot_sound = $Sounds/Shoot_sound
-#@onready var level_music = $"../AudioStreamPlayer"
 
 @onready var dash_particles = $DashParticles
 @onready var rng = RandomNumberGenerator.new()
@@ -77,7 +78,7 @@ func movement_ctrl(delta):
 		if not is_on_floor() and velocity.y >= 0:
 			velocity.y = 0
 	else:
-		velocity.x = 0
+		velocity.x = SPEED
 
 func animation_ctrl():
 	if not is_on_floor():
@@ -97,6 +98,7 @@ func death_ctrl(delta):
 	if animated_sprite_2d.animation != "die":
 		animated_sprite_2d.play("die")
 		game_over_timer.start()
+		shoots_collision_shape_2d.disabled = true
 
 func perform_action(card: String):
 	match card:
@@ -133,10 +135,8 @@ func damage_ctrl(damage):
 			shake_duration = SHAKE_DURATION
 			health -= damage
 			if health <= 0:
-				game_over_timer.start()
 				is_dead = true
 				velocity.x = SPEED
-				collision_shape_2d.disabled = true
 
 func apply_camera_shake(delta):
 	if shake_duration > 0:
@@ -148,11 +148,10 @@ func apply_camera_shake(delta):
 func calculate_distance():
 	return int(global_position.distance_to(Vector2.ZERO))
 
-func _on_area_2d_area_entered(_area):
-	#if area is Enemy3_shoot:
-		#damage_ctrl(1)
-		#area.queue_free()
-	pass
+func _on_area_2d_area_entered(area):
+	if area is Turret_shoot:
+		damage_ctrl(1)
+		area.queue_free()
 
 func _on_a_timer_timeout():
 	a_timer.stop()

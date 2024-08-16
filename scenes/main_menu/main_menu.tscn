@@ -81,6 +81,7 @@ focus_neighbor_left = NodePath("../Shop_button")
 focus_neighbor_right = NodePath("../Shop_button")
 focus_neighbor_bottom = NodePath("../Settings_button")
 theme = ExtResource("3_adlps")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Play"
 
@@ -100,6 +101,7 @@ focus_neighbor_left = NodePath("../Play_button")
 focus_neighbor_right = NodePath("../Play_button")
 focus_neighbor_bottom = NodePath("../Exit_button")
 theme = ExtResource("3_adlps")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Shop"
 
@@ -121,6 +123,7 @@ focus_neighbor_left = NodePath("../Exit_button")
 focus_neighbor_top = NodePath("../Play_button")
 focus_neighbor_right = NodePath("../Exit_button")
 theme = ExtResource("3_adlps")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 
@@ -138,6 +141,7 @@ focus_neighbor_left = NodePath("../Settings_button")
 focus_neighbor_top = NodePath("../Shop_button")
 focus_neighbor_right = NodePath("../Settings_button")
 theme = ExtResource("3_adlps")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Exit"
 

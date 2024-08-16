@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp74cxffl63u2"]
+[gd_scene load_steps=15 format=3 uid="uid://dp74cxffl63u2"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_tmuks"]
 [ext_resource type="Texture2D" uid="uid://i2gmjlevrrdr" path="res://assets/visuals/sprites/player/tile_dead.png" id="2_l6i07"]
@@ -13,6 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://cwr23b5gu1rk" path="res://assets/sounds/sfx/player/player_hurt.wav" id="11_vn182"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0llg"]
+size = Vector2(6, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrtyl"]
 size = Vector2(6, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il12f"]
@@ -55,6 +58,12 @@ script = ExtResource("1_tmuks")
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_l0llg")
 
+[node name="Shoots_Area2D" type="Area2D" parent="."]
+
+[node name="Shoots_CollisionShape2D" type="CollisionShape2D" parent="Shoots_Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_lrtyl")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_il12f")
 animation = &"die"
@@ -92,6 +101,7 @@ stream = ExtResource("11_vn182")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(181, 0)
 
+[connection signal="area_entered" from="Shoots_Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timers/X_Timer" to="." method="_on_x_timer_timeout"]
 [connection signal="timeout" from="Timers/Y_Timer" to="." method="_on_y_timer_timeout"]
 [connection signal="timeout" from="Timers/A_Timer" to="." method="_on_a_timer_timeout"]

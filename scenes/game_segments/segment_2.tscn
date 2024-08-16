@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d5rv1b6gvsqf"]
+[gd_scene load_steps=5 format=3 uid="uid://c4jrc703ij37v"]
 
-[ext_resource type="Texture2D" uid="uid://don3d4k17nthw" path="res://assets/visuals/sprites/tiles/tilemap.png" id="1_kyn87"]
-[ext_resource type="PackedScene" uid="uid://o60t5ghwenkf" path="res://scenes/enemies/turret/turret.tscn" id="4_51t0r"]
+[ext_resource type="Texture2D" uid="uid://don3d4k17nthw" path="res://assets/visuals/sprites/tiles/tilemap.png" id="1_y7qsr"]
+[ext_resource type="PackedScene" uid="uid://bafnn8wh0gvow" path="res://scenes/enemies/crawler/crawler.tscn" id="2_evtey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0cj8"]
-texture = ExtResource("1_kyn87")
+texture = ExtResource("1_y7qsr")
 separation = Vector2i(1, 1)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1216,5 +1216,8 @@ tile_set = SubResource("TileSet_rxd75")
 format = 2
 layer_0/tile_data = PackedInt32Array(917504, 1179649, 17, 917505, 1179649, 17, 917506, 1179649, 17, 917507, 1179649, 17, 917508, 1179649, 17, 917509, 1179649, 17, 917510, 1179649, 17, 917511, 1179649, 17, 917512, 1179649, 17, 917513, 1179649, 17, 917514, 1179649, 17, 917515, 1179649, 17, 917516, 1179649, 17, 917517, 1179649, 17, 917518, 1179649, 17, 917519, 1179649, 17, 917520, 1179649, 17, 917521, 1179649, 17, 917522, 1179649, 17, 917523, 1179649, 17, 917524, 1179649, 17, 917525, 1179649, 17, 917526, 1179649, 17, 917527, 1179649, 17, 917528, 1179649, 17, 917529, 1179649, 17, 917530, 1179649, 17, 917531, 1179649, 17, 917532, 1179649, 17, 917533, 1179649, 17)
 
-[node name="Turret" parent="." instance=ExtResource("4_51t0r")]
-position = Vector2(431, 62)
+[node name="Crawler" parent="." instance=ExtResource("2_evtey")]
+position = Vector2(114, 216)
+
+[node name="Crawler2" parent="." instance=ExtResource("2_evtey")]
+position = Vector2(470, 216)

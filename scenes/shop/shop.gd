@@ -4,6 +4,7 @@ var items = []
 @onready var item_grid = $ScrollContainer/GridContainer
 @onready var coins_label = $Header/Coins_label
 @onready var menu_button = $Header/Menu_button
+@onready var play_button = $Header/Play_button
 @onready var focus_sound = $Focus_sound
 
 func _ready():
@@ -20,6 +21,7 @@ func update_credits_label():
 	coins_label.text = "Coins: " + str(GLOBAL.coins)
 
 func populate_shop():
+	var index = 0
 	for item_data in items:
 		var item_container = preload("res://scenes/shop/shop_item_card.tscn").instantiate()
 		item_container.item_name = item_data.name
@@ -34,14 +36,16 @@ func populate_shop():
 		else: item_container.item_sold = false
 		item_container.custom_minimum_size = Vector2(130,180)
 		item_grid.add_child(item_container)
-
+		item_grid.get_child(index).get_child(0).focus_neighbor_top = play_button.get_path()
+		index += 1
+		
+	play_button.focus_neighbor_bottom = item_grid.get_child(0).get_child(0).get_path()
 
 func play_focus_sound():
 	focus_sound.play()
 
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
-
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
