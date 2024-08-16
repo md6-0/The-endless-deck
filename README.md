@@ -2,7 +2,7 @@ Juego estilo endless runner horizontal en 2D con una estética 1 bit. En este ju
 
 Características
 
-    Sistema de Control con Cartas Dinámicas: Al inicio de cada nivel, los botones A, B, X e Y de tu mando están asignados a diferentes acciones (p. ej., salto, disparo, dash). Cada vez que usas uno de estos botones, la acción se reasigna aleatoriamente entre las disponibles en tu baraja.
+    Al inicio de cada nivel, los botones A, B, X e Y de tu mando están asignados a diferentes acciones (p. ej., salto, disparo, dash). Cada vez que usas uno de estos botones, la acción se reasigna aleatoriamente entre las disponibles en tu baraja.
     Progresión y Desbloqueo: A medida que avanzas en el juego, puedes ganar monedas para comprar nuevas cartas que añadirán más variedad y estrategia a tu baraja.
 
 Objetivos del Juego
