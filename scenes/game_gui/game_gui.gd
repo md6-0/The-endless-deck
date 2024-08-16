@@ -33,13 +33,15 @@ func update_cards_gui():
 func update_sprite(sprite: Sprite2D, action: String):
 	match action:
 		"Jump":
-			sprite.texture = load("res://assets/visuals/sprites/24-sprite-yellow.png")
+			sprite.texture = load("res://assets/visuals/sprites/cards/jump_card.png")
 		"Dash":
-			sprite.texture = load("res://assets/visuals/sprites/24-sprite-red.png")
+			sprite.texture = load("res://assets/visuals/sprites/cards/dash_card.png")
 		"Shoot":
-			sprite.texture = load("res://assets/visuals/sprites/24-sprite-blue.png")
+			sprite.texture = load("res://assets/visuals/sprites/cards/shoot_card.png")
+		"Tsunami":
+			sprite.texture = load("res://assets/visuals/sprites/cards/tsunami_card.png")
 		_:
-			sprite.texture = load("res://assets/visuals/sprites/24-sprite-grey.png")
+			sprite.texture = load("res://assets/visuals/sprites/cards/empty_card.png")
 
 func hide_game_gui():
 	$CanvasLayer.visible = false

@@ -36,10 +36,11 @@ func populate_shop():
 		item_container.custom_minimum_size = Vector2(130,180)
 		item_grid.add_child(item_container)
 		var added_button = item_grid.get_child(index).get_child(0)
-		added_button.focus_neighbor_top = play_button.get_path()
+		if index < 3:
+			added_button.focus_neighbor_top = play_button.get_path()
 		if index == 0:
 			added_button.grab_focus()
-		index += 1	
+		index += 1
 	play_button.focus_neighbor_bottom = item_grid.get_child(0).get_child(0).get_path()
 
 func play_focus_sound():

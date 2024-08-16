@@ -100,9 +100,8 @@ stream = ExtResource("10_xjhtj")
 stream = ExtResource("11_vn182")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(194, 0)
-limit_top = 23
-limit_bottom = 293
+position = Vector2(194, -54)
+limit_top = 27
 
 [connection signal="area_entered" from="Shoots_Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timers/X_Timer" to="." method="_on_x_timer_timeout"]

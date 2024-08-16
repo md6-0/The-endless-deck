@@ -3,7 +3,7 @@ class_name Player
 
 signal player_died
 
-const SPEED = 0
+const SPEED = 175
 const JUMP_VELOCITY = -375.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.35
@@ -105,6 +105,7 @@ func perform_action(card: String):
 		"Jump": jump_ctrl()
 		"Dash": dash_ctrl()
 		"Shoot": shoot_ctrl()
+		"Tsunami": tsunami_ctrl()
 	RUNINFORMATION.cards_used += 1
 
 func jump_ctrl():
@@ -127,6 +128,9 @@ func shoot_ctrl():
 	var proyectile_instance = proyectile.instantiate()
 	proyectile_instance.global_position = global_position
 	get_tree().call_group("level", "add_child", proyectile_instance)
+
+func tsunami_ctrl():
+	pass
 
 func damage_ctrl(damage):
 	if health > 0:

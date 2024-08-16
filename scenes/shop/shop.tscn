@@ -55,6 +55,9 @@ offset_left = 4.0
 offset_top = 52.0
 offset_right = 474.0
 offset_bottom = 269.0
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
