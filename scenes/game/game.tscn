@@ -9,6 +9,9 @@
 [node name="Game" type="Node2D" groups=["level"]]
 script = ExtResource("1_2lfek")
 
+[node name="Player" parent="." instance=ExtResource("2_8w1hq")]
+position = Vector2(12, 136)
+
 [node name="GameOver" parent="." instance=ExtResource("2_c5yy4")]
 
 [node name="GameGui" parent="." instance=ExtResource("1_rkbir")]
@@ -19,8 +22,5 @@ offset_bottom = 215.0
 
 [node name="Level_generator" type="Node" parent="."]
 script = ExtResource("1_e1vj8")
-
-[node name="Player" parent="." instance=ExtResource("2_8w1hq")]
-position = Vector2(12, 175)
 
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

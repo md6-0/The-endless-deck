@@ -2,7 +2,7 @@ extends Control
 
 @onready var restart = $CanvasLayer/Restart
 @onready var exit = $CanvasLayer/Exit
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var focus_sound = $Focus_sound
 
 @onready var label_youdied = $CanvasLayer/Label_youdied
 @onready var label_time = $CanvasLayer/Label_time
@@ -111,10 +111,10 @@ func _on_restart_pressed():
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
 
 func _on_restart_focus_exited():
-	audio_stream_player.play()
+	focus_sound.play()
 
 func _on_exit_focus_exited():
-	audio_stream_player.play()
+	focus_sound.play()
 
 func _on_store_pressed():
 	RUNINFORMATION.reset_run_vars()

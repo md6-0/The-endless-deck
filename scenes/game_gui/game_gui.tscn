@@ -16,25 +16,25 @@ script = ExtResource("1_uanbx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="X_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(147, 243)
+position = Vector2(220, 238)
 texture = ExtResource("1_7jac7")
 
 [node name="Y_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(211, 243)
+position = Vector2(249, 223)
 texture = ExtResource("1_7jac7")
 
 [node name="A_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(273, 243)
+position = Vector2(249, 253)
 texture = ExtResource("1_7jac7")
 
 [node name="B_Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(336, 243)
+position = Vector2(278, 238)
 texture = ExtResource("1_7jac7")
 
 [node name="Health_Label" type="Label" parent="CanvasLayer"]
-offset_left = 217.0
+offset_left = 7.0
 offset_top = 211.0
-offset_right = 265.0
+offset_right = 55.0
 offset_bottom = 219.0
 theme = ExtResource("3_8fm1a")
-text = "Healt: 3"
+text = "Health: 3"

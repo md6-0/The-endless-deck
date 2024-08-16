@@ -3,7 +3,7 @@ class_name Player
 
 signal player_died
 
-const SPEED = 175.0
+const SPEED = 0
 const JUMP_VELOCITY = -375.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.35

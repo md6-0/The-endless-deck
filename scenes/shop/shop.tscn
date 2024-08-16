@@ -64,5 +64,7 @@ columns = 3
 [node name="Focus_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dl42c")
 
+[connection signal="focus_exited" from="Header/Menu_button" to="." method="_on_menu_button_focus_exited"]
 [connection signal="pressed" from="Header/Menu_button" to="." method="_on_menu_button_pressed"]
+[connection signal="focus_exited" from="Header/Play_button" to="." method="_on_menu_button_focus_exited"]
 [connection signal="pressed" from="Header/Play_button" to="." method="_on_play_button_pressed"]

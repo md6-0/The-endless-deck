@@ -13,6 +13,7 @@ var item_sold: bool
 @onready var item_price_label = $Button/item_price_label
 @onready var success_sound = $success_sound
 @onready var error_sound = $error_sound
+@onready var focus_sound = $Focus_sound
 
 
 func _ready():
@@ -36,3 +37,7 @@ func _on_buy_button_pressed():
 		SAVEMANAGER.save_game()
 	else:
 		error_sound.play()
+
+
+func _on_button_focus_exited():
+	focus_sound.play()
