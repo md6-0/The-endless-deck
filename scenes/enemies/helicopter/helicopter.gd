@@ -19,8 +19,7 @@ func _physics_process(delta):
 		time_passed += delta
 		global_position.y = initial_position.y + amplitude * sin(speed * time_passed + phase_offset)
 	else:
-		var new_gpos = 0
-		
+		var new_gpos = 0	
 		if global_position.y < 216:
 			new_gpos = int(global_position.y)
 			new_gpos += 1
@@ -50,11 +49,11 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("shoot"):
 		killed_by_shoot = true
+		area.play_hit_animation()
 		area_2d.queue_free()
-		area.queue_free()
 		animated_sprite_2d.play("dead")
 		is_dead = true
-		#audio_stream_player.play()
+		audio_stream_player.play()
 
 #Cuando el audio acaba, eliminamos al personaje.
 func _on_audio_stream_player_finished():

@@ -12,6 +12,7 @@ var segment_scene_0 = preload("res://scenes/game_segments/segment_0.tscn")
 var segment_scene_1 = preload("res://scenes/game_segments/segment_1.tscn")
 var segment_scene_2 = preload("res://scenes/game_segments/segment_2.tscn")
 var segment_scene_3 = preload("res://scenes/game_segments/segment_3.tscn")
+
 var player: Player
 
 # Called when the node enters the scene tree for the first time.

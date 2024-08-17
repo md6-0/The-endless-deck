@@ -1,14 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://o60t5ghwenkf"]
+[gd_scene load_steps=7 format=3 uid="uid://o60t5ghwenkf"]
 
 [ext_resource type="Script" path="res://scenes/enemies/turret/turret.gd" id="1_4t8ho"]
 [ext_resource type="Texture2D" uid="uid://dnbgvu87w2r7g" path="res://assets/visuals/sprites/enemies/turret/turret_net.png" id="2_xa6rq"]
 [ext_resource type="Texture2D" uid="uid://d08hcgx6rkmtn" path="res://assets/visuals/sprites/enemies/turret/turret_spider.png" id="3_htin4"]
+[ext_resource type="AudioStream" uid="uid://bhpopbmdgvi11" path="res://assets/sounds/sfx/enemies/helicopter/helicopter_hurt.wav" id="4_iygrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tarpl"]
 size = Vector2(290, 215)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpw82"]
+size = Vector2(8, 7)
+
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_4t8ho")
+
+[node name="Detection_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Area2D"]
+position = Vector2(0, 97.5)
+shape = SubResource("RectangleShape2D_tarpl")
+
+[node name="Collision_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Area2D"]
+position = Vector2(0, 39.5)
+shape = SubResource("RectangleShape2D_wpw82")
 
 [node name="TurretNet" type="Sprite2D" parent="."]
 position = Vector2(0, 8)
@@ -25,17 +41,18 @@ texture = ExtResource("3_htin4")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 45)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 97.5)
-shape = SubResource("RectangleShape2D_tarpl")
-
 [node name="Shoot_Timer" type="Timer" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, 39.5)
+scale = Vector2(0.4, 0.35)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Dead_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iygrn")
+
+[connection signal="body_entered" from="Detection_Area2D" to="." method="_on_detection_area_2d_body_entered"]
+[connection signal="body_exited" from="Detection_Area2D" to="." method="_on_detection_area_2d_body_exited"]
+[connection signal="area_entered" from="Collision_Area2D" to="." method="_on_collision_area_2d_area_entered"]
+[connection signal="body_entered" from="Collision_Area2D" to="." method="_on_collision_area_2d_body_entered"]
 [connection signal="timeout" from="Shoot_Timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

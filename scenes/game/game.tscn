@@ -10,6 +10,9 @@
 [node name="Game" type="Node2D" groups=["level"]]
 script = ExtResource("1_2lfek")
 
+[node name="Level_generator" type="Node" parent="."]
+script = ExtResource("1_e1vj8")
+
 [node name="Player" parent="." instance=ExtResource("2_8w1hq")]
 position = Vector2(12, 136)
 
@@ -20,9 +23,6 @@ offset_left = 54.0
 offset_top = 215.0
 offset_right = 54.0
 offset_bottom = 215.0
-
-[node name="Level_generator" type="Node" parent="."]
-script = ExtResource("1_e1vj8")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tme8o")

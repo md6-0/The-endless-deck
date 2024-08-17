@@ -4,7 +4,8 @@ var a: Sprite2D
 var b: Sprite2D
 var x: Sprite2D
 var y: Sprite2D
-var health_label: Label
+var heart_texture: CompressedTexture2D
+var hearts_h_box_container: HBoxContainer
 var hand: Array
 var player
 
@@ -13,15 +14,25 @@ func _ready():
 	b = $CanvasLayer/B_Sprite2D
 	x = $CanvasLayer/X_Sprite2D
 	y = $CanvasLayer/Y_Sprite2D
-	health_label = $CanvasLayer/Health_Label
+	hearts_h_box_container = $CanvasLayer/Hearts_HBoxContainer
+	heart_texture = preload("res://assets/visuals/interface/heart.png")
 	player = get_tree().get_nodes_in_group("player")[0]  
 
 func _process(_delta):
-	update_healt_label()
 	update_cards_gui()
+	populate_hearts()
 
-func update_healt_label():
-	health_label.text = "Health: " + str(player.health)
+func populate_hearts():
+	# Limpiamos el contenedor
+	for child in hearts_h_box_container.get_children():
+		child.free()
+	
+	# Añadimos un corazón por cada vida del jugador
+	for i in range(player.health):
+		var heart = TextureRect.new()
+		heart.texture = heart_texture
+		heart.modulate = Color(1, 0, 0)
+		hearts_h_box_container.add_child(heart)
 
 func update_cards_gui():
 	hand = GLOBAL.get_hand()

@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://do13qs6h5kkkt"]
+[gd_scene load_steps=12 format=3 uid="uid://do13qs6h5kkkt"]
 
 [ext_resource type="Script" path="res://scenes/player/shoot.gd" id="1_qjrgw"]
 [ext_resource type="Texture2D" uid="uid://ne5ju2tacf4h" path="res://assets/visuals/sprites/player/shoot1.png" id="2_hfe58"]
 [ext_resource type="Texture2D" uid="uid://dnkp3yqchv4h5" path="res://assets/visuals/sprites/player/shoot2.png" id="3_krlc1"]
 [ext_resource type="Texture2D" uid="uid://c5e5d2mf5okx2" path="res://assets/visuals/sprites/player/shoot3.png" id="4_kew5r"]
 [ext_resource type="Texture2D" uid="uid://m8cobewywda" path="res://assets/visuals/sprites/player/shoot4.png" id="5_wumyl"]
+[ext_resource type="Texture2D" uid="uid://cf2yjaygs6wy6" path="res://assets/visuals/sprites/player/shoot-hit1.png" id="6_yut32"]
+[ext_resource type="Texture2D" uid="uid://csja6bk56qshn" path="res://assets/visuals/sprites/player/shoot-hit2.png" id="7_2gdgy"]
+[ext_resource type="Texture2D" uid="uid://df5cfnqa7b5y5" path="res://assets/visuals/sprites/player/shoot-hit3.png" id="8_s4g3y"]
+[ext_resource type="Texture2D" uid="uid://ctecf3qrko4l6" path="res://assets/visuals/sprites/player/shoot-hit4.png" id="9_vlgey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6plm"]
 
@@ -26,6 +30,26 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yut32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2gdgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s4g3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vlgey")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
 }]
 
 [node name="Shoot" type="Area2D" groups=["shoot"]]
@@ -36,10 +60,12 @@ shape = SubResource("CircleShape2D_h6plm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_io3gm")
+animation = &"hit"
 autoplay = "default"
-frame = 3
+frame = 4
 frame_progress = 1.0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

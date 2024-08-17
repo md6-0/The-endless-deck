@@ -22,7 +22,7 @@ func _on_area_2d_body_entered(body):
 #Función que detecta areas colisionando con el enemigo. Ahora se usa sólo para las balas del personaje
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("shoot"):
-		area.queue_free()
+		area.play_hit_animation()
 		is_dead = true
 		area_2d.queue_free()
 		animated_sprite_2d.play("dead")

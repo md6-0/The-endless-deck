@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rx021ig017x5"]
+
+[ext_resource type="PackedScene" uid="uid://crkcdpucrjfvv" path="res://scenes/tilemap/main_tilemap.tscn" id="1_c3w23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02thj"]
+size = Vector2(144, 6)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 3)
+shape = SubResource("RectangleShape2D_02thj")
+one_way_collision = true
+
+[node name="MainTilemap" parent="." instance=ExtResource("1_c3w23")]
+layer_0/tile_data = PackedInt32Array(0, 262144, 2, 1, 327680, 2, 2, 327680, 2, 3, 327680, 2, 4, 327680, 2, 5, 327680, 2, 6, 327680, 2, 7, 327680, 2, 8, 393216, 2)

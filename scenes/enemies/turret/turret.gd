@@ -5,17 +5,20 @@ extends Node2D
 @onready var shoot_timer = $Shoot_Timer
 @onready var turret_shoot = preload("res://scenes/enemies/turret/turret_shoot.tscn")
 @onready var shoot_position = $Marker2D
+@onready var dead_sound = $Dead_sound
+@onready var turret_spider_sprite = $TurretSpider_sprite
+
 
 var player
 
-func _on_area_2d_body_entered(body):
+func _on_detection_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
 		player = body
 		player_detected = true
 		shoot()
 		shoot_timer.start()
 
-func _on_area_2d_body_exited(body):
+func _on_detection_area_2d_body_exited(body):
 	if body is Player and not body.is_dead:
 		player_detected = false
 		shoot_timer.stop()
@@ -33,3 +36,21 @@ func _on_shoot_timer_timeout():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	shoot_timer.stop()
 	queue_free()
+
+#Función que detecta cuerpos colisionando con el enemigo
+#Ahora se usa sólo para detectar al personaje
+func _on_collision_area_2d_body_entered(body):
+	if body is Player and not body.is_dead:
+		shoot_timer.stop()
+		body.damage_ctrl(1)
+		turret_spider_sprite.visible = false
+		dead_sound.play()
+
+#Función que detecta areas colisionando con el enemigo
+#Ahora se usa sólo para las balas del personaje
+func _on_collision_area_2d_area_entered(area):
+	if area.is_in_group("shoot"):
+		shoot_timer.stop()
+		area.play_hit_animation()
+		turret_spider_sprite.visible = false
+		dead_sound.play()
