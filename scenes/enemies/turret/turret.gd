@@ -7,9 +7,12 @@ extends Node2D
 @onready var shoot_position = $Marker2D
 @onready var dead_sound = $Dead_sound
 @onready var turret_spider_sprite = $TurretSpider_sprite
-
-
+@onready var is_dead: bool = false
 var player
+
+func _process(delta):
+	if is_dead:
+		global_position.y -= 30 * delta
 
 func _on_detection_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
@@ -41,16 +44,16 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 #Ahora se usa sólo para detectar al personaje
 func _on_collision_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
+		is_dead = true
 		shoot_timer.stop()
 		body.damage_ctrl(1)
-		turret_spider_sprite.visible = false
 		dead_sound.play()
 
 #Función que detecta areas colisionando con el enemigo
 #Ahora se usa sólo para las balas del personaje
 func _on_collision_area_2d_area_entered(area):
 	if area.is_in_group("shoot"):
+		is_dead = true
 		shoot_timer.stop()
 		area.play_hit_animation()
-		turret_spider_sprite.visible = false
 		dead_sound.play()
