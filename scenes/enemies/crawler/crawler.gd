@@ -4,15 +4,18 @@ extends Node2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var area_2d = $Area2D
 @onready var speed = 20.0 
+@onready var dead_speed = 120
 var is_dead = false
 
 func _physics_process(delta):
 	if not is_dead:
 		global_position.x += -speed * delta
+	else: global_position.y += dead_speed * delta
 
 #Función que detecta cuerpos colisionando con el enemigo. Ahora se usa sólo para la colisión con el personaje
 func _on_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
+		is_dead = true
 		area_2d.queue_free()
 		body.damage_ctrl(1)
 		animated_sprite_2d.play("dead")

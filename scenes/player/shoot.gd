@@ -15,4 +15,5 @@ func play_hit_animation():
 	$AnimatedSprite2D.play("hit")
 
 func _on_animated_sprite_2d_animation_finished():
-	queue_free()
+	if hitted:
+		queue_free()

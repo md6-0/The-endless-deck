@@ -7,6 +7,7 @@ extends Node2D
 @onready var amplitude = 50.0
 @onready var speed = 2.0 
 @onready var initial_position = global_position
+@onready var dead_speed = 120 
 
 var time_passed = 0.0
 var phase_offset = randf_range(0.0, TAU)
@@ -19,25 +20,14 @@ func _physics_process(delta):
 		time_passed += delta
 		global_position.y = initial_position.y + amplitude * sin(speed * time_passed + phase_offset)
 	else:
-		var new_gpos = 0	
-		if global_position.y < 216:
-			new_gpos = int(global_position.y)
-			new_gpos += 1
-			global_position.y = new_gpos
-			
-		elif  global_position.y > 216:
-			new_gpos = int(global_position.y)
-			new_gpos -= 1
-			global_position.y = new_gpos
-			
-		elif  global_position.y == 216:
-			global_position.y = 216
+		global_position.y += dead_speed * delta
 
 
 #Función que detecta cuerpos colisionando con el enemigo
 #Ahora se usa sólo para detectar al personaje
 func _on_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
+		is_dead = true
 		area_2d.queue_free()
 		animated_sprite_2d.visible = false
 		body.damage_ctrl(1)
@@ -48,11 +38,11 @@ func _on_area_2d_body_entered(body):
 #Ahora se usa sólo para las balas del personaje
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("shoot"):
+		is_dead = true
 		killed_by_shoot = true
 		area.play_hit_animation()
 		area_2d.queue_free()
 		animated_sprite_2d.play("dead")
-		is_dead = true
 		audio_stream_player.play()
 
 #Cuando el audio acaba, eliminamos al personaje.

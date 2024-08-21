@@ -12,7 +12,7 @@ var player
 
 func _process(delta):
 	if is_dead:
-		global_position.y -= 30 * delta
+		global_position.y -= 120 * delta
 
 func _on_detection_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
@@ -44,8 +44,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 #Ahora se usa sólo para detectar al personaje
 func _on_collision_area_2d_body_entered(body):
 	if body is Player and not body.is_dead:
-		is_dead = true
 		shoot_timer.stop()
+		is_dead = true
 		body.damage_ctrl(1)
 		dead_sound.play()
 
@@ -53,7 +53,7 @@ func _on_collision_area_2d_body_entered(body):
 #Ahora se usa sólo para las balas del personaje
 func _on_collision_area_2d_area_entered(area):
 	if area.is_in_group("shoot"):
-		is_dead = true
 		shoot_timer.stop()
+		is_dead = true
 		area.play_hit_animation()
 		dead_sound.play()

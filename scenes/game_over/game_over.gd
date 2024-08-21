@@ -104,9 +104,11 @@ func _on_typing_timer_timeout():
 		typing_timer.stop()
 
 func _on_exit_pressed():
+	SAVEMANAGER.save_game()
 	get_tree().quit()
 
 func _on_restart_pressed():
+	SAVEMANAGER.save_game()
 	RUNINFORMATION.reset_run_vars()
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
 
@@ -117,5 +119,6 @@ func _on_exit_focus_exited():
 	focus_sound.play()
 
 func _on_store_pressed():
+	SAVEMANAGER.save_game()
 	RUNINFORMATION.reset_run_vars()
 	get_tree().change_scene_to_file("res://scenes/shop/shop.tscn")

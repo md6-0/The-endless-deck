@@ -10,6 +10,7 @@ var card: String
 
 func _ready():
 	reset_vars()
+	SAVEMANAGER.load_game()
 
 func create_hand():
 	hand = []
@@ -28,6 +29,6 @@ func get_hand():
 	return hand
 
 func reset_vars():
-	coins = 5000
+	coins = 0
 	hand = []
 	deck = ["Shoot", "Jump"]

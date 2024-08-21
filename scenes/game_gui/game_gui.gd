@@ -15,7 +15,7 @@ func _ready():
 	x = $CanvasLayer/X_Sprite2D
 	y = $CanvasLayer/Y_Sprite2D
 	hearts_h_box_container = $CanvasLayer/Hearts_HBoxContainer
-	heart_texture = preload("res://assets/visuals/interface/heart.png")
+	heart_texture = preload("res://assets/visuals/sprites/heart/heart.png")
 	player = get_tree().get_nodes_in_group("player")[0]  
 
 func _process(_delta):

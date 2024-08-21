@@ -1,7 +1,7 @@
 extends Node
 
 
-const SEGMENT_LENGTH = 450 # Longitud de cada segmento
+const SEGMENT_LENGTH = 1000 # Longitud de cada segmento
 var generated_segments = [] # Array para manejar los segmentos generados
 var segment_scenes = [] # Array para almacenar las escenas de los segmentos
 var is_second_segment = true
@@ -12,6 +12,9 @@ var segment_scene_0 = preload("res://scenes/game_segments/segment_0.tscn")
 var segment_scene_1 = preload("res://scenes/game_segments/segment_1.tscn")
 var segment_scene_2 = preload("res://scenes/game_segments/segment_2.tscn")
 var segment_scene_3 = preload("res://scenes/game_segments/segment_3.tscn")
+var segment_scene_4 = preload("res://scenes/game_segments/segment_4.tscn")
+var segment_scene_5 = preload("res://scenes/game_segments/segment_5.tscn")
+var segment_scene_6 = preload("res://scenes/game_segments/segment_6.tscn")
 
 var player: Player
 
@@ -24,7 +27,9 @@ func _ready():
 	segment_scenes.append(segment_scene_1)
 	segment_scenes.append(segment_scene_2)
 	segment_scenes.append(segment_scene_3)
-
+	segment_scenes.append(segment_scene_4)
+	segment_scenes.append(segment_scene_5)
+	segment_scenes.append(segment_scene_6)
 
 	# Generar los 3 primeros segmentos del nivel
 	spawn_first_segment()
