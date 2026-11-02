@@ -1,5 +1,7 @@
 # The endless deck
 
+**[Jugar en el navegador](https://md6-0.github.io/The-endless-deck/)**: con teclado (WASD o flechas) o con mando.
+
 Juego estilo endless runner horizontal en 2D con  estética 1 bit.
 
 En este juego, tomas el control de un personaje que se desplaza automáticamente y cuenta con un sistema de control basado en cartas, que asigna acciones a los botones del mando de manera dinámica y aleatoria.
@@ -30,3 +32,11 @@ Acciones: Usa los botones A, B, X e Y (o WASD) para realizar acciones como salta
 Rotación de Acciones: Cada vez que usas una acción, el botón se reasigna aleatoriamente con una nueva acción de tu baraja.
 
 Sobrevive: Evita o derrota a los enemigos, supera obstáculos, y avanza tanto como puedas.
+
+
+## Versión web
+
+`export_presets.cfg` tiene un preset «Web» y la action `.github/workflows/web.yml` exporta el juego con Godot 4.3 y lo publica en GitHub Pages cada vez que se sube algo a `main`. Se exporta sin hilos para que funcione en GitHub Pages, que no permite configurar las cabeceras COOP/COEP.
+
+Para exportarlo a mano: Godot 4.3 o superior → Proyecto → Exportar → Web.
+

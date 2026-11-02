@@ -1,0 +1,76 @@
+name: Exportar a web y publicar
+
+# Exporta el juego con Godot para navegador y lo publica en GitHub Pages.
+# En los PR solo comprueba que la exportación funciona; publica al llegar a main.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: "4.3"
+  # 4.3 es la primera versión que exporta a web sin hilos: así no hacen falta
+  # las cabeceras COOP/COEP, que GitHub Pages no permite configurar.
+
+jobs:
+  exportar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Godot y plantillas web (en caché)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-web
+
+      - name: Descargar Godot y las plantillas web
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          base="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+          mkdir -p ~/godot ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          curl -sSL -o godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip -d ~/godot && rm godot.zip
+          curl -sSL -o plantillas.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip -qj plantillas.tpz 'templates/web_*' 'templates/version.txt' \
+            -d ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+          rm plantillas.tpz
+
+      - name: Importar recursos y exportar
+        run: |
+          godot=~/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64
+          # La primera apertura importa los recursos (crea .godot/).
+          $godot --headless --editor --quit || true
+          mkdir -p build/web
+          $godot --headless --export-release "Web" build/web/index.html
+          test -s build/web/index.wasm && test -s build/web/index.pck
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: build/web
+
+  publicar:
+    if: github.ref == 'refs/heads/main'
+    needs: exportar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
