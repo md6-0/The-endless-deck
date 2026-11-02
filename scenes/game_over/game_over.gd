@@ -28,6 +28,11 @@ var current_texts = []
 var char_indices = []
 var label_index = 0
 
+func _ready():
+	# En el navegador «Exit» lleva al menú principal (ver _on_exit_pressed).
+	if OS.has_feature("web"):
+		exit.text = "MENU"
+
 func star_game_over_overlay():
 	restart.grab_focus()
 	var time = RUNINFORMATION.run_time
@@ -105,7 +110,11 @@ func _on_typing_timer_timeout():
 
 func _on_exit_pressed():
 	SAVEMANAGER.save_game()
-	get_tree().quit()
+	# En el navegador no se puede cerrar la pestaña: se vuelve al menú principal.
+	if OS.has_feature("web"):
+		get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+	else:
+		get_tree().quit()
 
 func _on_restart_pressed():
 	SAVEMANAGER.save_game()
